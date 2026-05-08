@@ -144,19 +144,19 @@ export default function AlgorithmPage() {
             />
           )}
 
-          {/* Bottom panels: Code + Explanation side by side on desktop */}
+          {/* Bottom panels: Explanation + Code side by side on desktop */}
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-            <div className="lg:col-span-3">
-              <CodePanel
-                metadata={metadata}
-                codeLine={currentSnapshot?.codeLine}
-              />
-            </div>
             <div className="lg:col-span-2">
               <StepExplanation
                 explanation={currentSnapshot?.explanation}
                 currentStep={currentStep}
                 totalSteps={totalSteps}
+              />
+            </div>
+            <div className="lg:col-span-3">
+              <CodePanel
+                metadata={metadata}
+                codeLine={currentSnapshot?.codeLine}
               />
             </div>
           </div>
