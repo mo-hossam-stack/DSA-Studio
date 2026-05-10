@@ -1,7 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import algorithmsMetadata from '../data/algorithmsMetadata';
-import { generateBubbleSortSteps } from '../algorithms/bubbleSort';
 import { generateSelectionSortSteps } from '../algorithms/selectionSort';
 import { generateInsertionSortSteps } from '../algorithms/insertionSort';
 import { generateMergeSortSteps } from '../algorithms/mergeSort';
@@ -17,7 +16,6 @@ import CodePanel from '../components/CodePanel';
 import StepExplanation from '../components/StepExplanation';
 
 const stepGenerators = {
-  'bubble-sort': (arr) => generateBubbleSortSteps(arr),
   'selection-sort': (arr) => generateSelectionSortSteps(arr),
   'insertion-sort': (arr) => generateInsertionSortSteps(arr),
   'merge-sort': (arr) => generateMergeSortSteps(arr),
@@ -28,7 +26,7 @@ const stepGenerators = {
 
 export default function AlgorithmPage() {
   const { slug } = useParams();
-  const algoSlug = slug || 'bubble-sort';
+  const algoSlug = slug || 'selection-sort';
   const metadata = algorithmsMetadata[algoSlug];
   const isSearch = metadata?.type === 'searching';
 

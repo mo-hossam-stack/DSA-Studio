@@ -69,11 +69,10 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               className="md:hidden select-field text-sm py-1.5 px-2 max-w-[140px]"
               value={currentSlug}
               onChange={(e) => {
-                window.location.href = e.target.value === 'bubble-sort' ? '/' : `/${e.target.value}`;
+                window.location.href = `/${e.target.value}`;
               }}
               aria-label="Select algorithm"
             >
-              <option value="bubble-sort">Bubble Sort</option>
               <option value="selection-sort">Selection Sort</option>
               <option value="insertion-sort">Insertion Sort</option>
               <option value="merge-sort">Merge Sort</option>
