@@ -32,7 +32,7 @@ export default function App() {
 
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<Navigate to="/selection-sort" replace />} />
+          <Route path="/" element={<Navigate to="/insertion-sort" replace />} />
           <Route path="/:slug" element={<AlgorithmPage />} />
         </Routes>
       </main>
