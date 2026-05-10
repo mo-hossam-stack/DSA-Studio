@@ -1,5 +1,5 @@
 const algorithmsMetadata = {
-  'bubble-sort': {
+    'bubble-sort': {
     name: 'Bubble Sort',
     slug: 'bubble-sort',
     type: 'sorting',
@@ -44,10 +44,24 @@ const algorithmsMetadata = {
       '    }',
       '}',
     ],
+    bsmjaCode: `void bubbleSort(vector<int>& arr) {
+    int n = arr.size();
+    while (n--)
+        for (int j = 0; j < n; j++)
+            if (arr[j] > arr[j + 1]) swap(arr[j], arr[j + 1]);
+}`,
+    bsmjaLines: [
+      'void bubbleSort(vector<int>& arr) {',
+      '    int n = arr.size();',
+      '    while (n--)',
+      '        for (int j = 0; j < n; j++)',
+      '            if (arr[j] > arr[j + 1]) swap(arr[j], arr[j + 1]);',
+      '}',
+    ],
     complexityLine: 5,
   },
 
-  'selection-sort': {
+    'selection-sort': {
     name: 'Selection Sort',
     slug: 'selection-sort',
     type: 'sorting',
@@ -96,9 +110,21 @@ const algorithmsMetadata = {
       '    }',
       '}',
     ],
+    bsmjaCode: `void selectionSort(vector<int>& arr) {
+    int n = arr.size();
+    for (int i = 0; i < n - 1; i++)
+        swap(*min_element(arr.begin() + i, arr.end()), arr[i]);
+}`,
+    bsmjaLines: [
+      'void selectionSort(vector<int>& arr) {',
+      '    int n = arr.size();',
+      '    for (int i = 0; i < n - 1; i++)',
+      '        swap(*min_element(arr.begin() + i, arr.end()), arr[i]);',
+      '}',
+    ],
   },
 
-  'insertion-sort': {
+    'insertion-sort': {
     name: 'Insertion Sort',
     slug: 'insertion-sort',
     type: 'sorting',
@@ -143,9 +169,19 @@ const algorithmsMetadata = {
       '    }',
       '}',
     ],
+    bsmjaCode: `void insertionSort(vector<int>& arr) {
+    for (auto it = arr.begin(); it != arr.end(); it++)
+        rotate(upper_bound(arr.begin(), it, *it), it, it + 1);
+}`,
+    bsmjaLines: [
+      'void insertionSort(vector<int>& arr) {',
+      '    for (auto it = arr.begin(); it != arr.end(); it++)',
+      '        rotate(upper_bound(arr.begin(), it, *it), it, it + 1);',
+      '}',
+    ],
   },
 
-  'merge-sort': {
+    'merge-sort': {
     name: 'Merge Sort',
     slug: 'merge-sort',
     type: 'sorting',
@@ -213,9 +249,27 @@ void mergeSort(vector<int>& arr, int left, int right) {
       '    }',
       '}',
     ],
+    bsmjaCode: `void mergeSort(vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        inplace_merge(arr.begin() + left, arr.begin() + mid + 1, arr.begin() + right + 1);
+    }
+}`,
+    bsmjaLines: [
+      'void mergeSort(vector<int>& arr, int left, int right) {',
+      '    if (left < right) {',
+      '        int mid = left + (right - left) / 2;',
+      '        mergeSort(arr, left, mid);',
+      '        mergeSort(arr, mid + 1, right);',
+      '        inplace_merge(arr.begin() + left, arr.begin() + mid + 1, arr.begin() + right + 1);',
+      '    }',
+      '}',
+    ],
   },
 
-  'quick-sort': {
+    'quick-sort': {
     name: 'Quick Sort',
     slug: 'quick-sort',
     type: 'sorting',
@@ -281,9 +335,33 @@ void quickSort(vector<int>& arr, int low, int high) {
       '    }',
       '}',
     ],
+    bsmjaCode: `void quickSort(vector<int>& arr, int low, int high) {
+    if (low < high) {
+        int pivot = arr[high], i = low - 1;
+        for (int j = low; j < high; j++)
+            if (arr[j] <= pivot) swap(arr[++i], arr[j]);
+        swap(arr[i + 1], arr[high]);
+        int pi = i + 1;
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}`,
+    bsmjaLines: [
+      'void quickSort(vector<int>& arr, int low, int high) {',
+      '    if (low < high) {',
+      '        int pivot = arr[high], i = low - 1;',
+      '        for (int j = low; j < high; j++)',
+      '            if (arr[j] <= pivot) swap(arr[++i], arr[j]);',
+      '        swap(arr[i + 1], arr[high]);',
+      '        int pi = i + 1;',
+      '        quickSort(arr, low, pi - 1);',
+      '        quickSort(arr, pi + 1, high);',
+      '    }',
+      '}',
+    ],
   },
 
-  'linear-search': {
+    'linear-search': {
     name: 'Linear Search',
     slug: 'linear-search',
     type: 'searching',
@@ -315,9 +393,19 @@ void quickSort(vector<int>& arr, int low, int high) {
       '    return -1;  // Not found',
       '}',
     ],
+    bsmjaCode: `int linearSearch(vector<int>& arr, int target) {
+    auto it = find(arr.begin(), arr.end(), target);
+    return it != arr.end() ? it - arr.begin() : -1;
+}`,
+    bsmjaLines: [
+      'int linearSearch(vector<int>& arr, int target) {',
+      '    auto it = find(arr.begin(), arr.end(), target);',
+      '    return it != arr.end() ? it - arr.begin() : -1;',
+      '}',
+    ],
   },
 
-  'binary-search': {
+    'binary-search': {
     name: 'Binary Search',
     slug: 'binary-search',
     type: 'searching',
@@ -365,6 +453,16 @@ void quickSort(vector<int>& arr, int low, int high) {
       '        }',
       '    }',
       '    return -1;  // Not found',
+      '}',
+    ],
+    bsmjaCode: `int binarySearch(vector<int>& arr, int target) {
+    auto it = lower_bound(arr.begin(), arr.end(), target);
+    return (it != arr.end() && *it == target) ? it - arr.begin() : -1;
+}`,
+    bsmjaLines: [
+      'int binarySearch(vector<int>& arr, int target) {',
+      '    auto it = lower_bound(arr.begin(), arr.end(), target);',
+      '    return (it != arr.end() && *it == target) ? it - arr.begin() : -1;',
       '}',
     ],
   },

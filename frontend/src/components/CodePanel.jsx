@@ -8,7 +8,7 @@ export default function CodePanel({ metadata, codeLine }) {
 
   const handleCopy = useCallback(() => {
     if (!metadata) return;
-    const text = activeTab === 'pseudocode' ? metadata.pseudocode : metadata.cppCode;
+    const text = activeTab === 'pseudocode' ? metadata.pseudocode : activeTab === 'cpp' ? metadata.cppCode : metadata.bsmjaCode;
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -23,7 +23,7 @@ export default function CodePanel({ metadata, codeLine }) {
     );
   }
 
-  const currentCode = activeTab === 'pseudocode' ? metadata.pseudocode : metadata.cppCode;
+  const currentCode = activeTab === 'pseudocode' ? metadata.pseudocode : activeTab === 'cpp' ? metadata.cppCode : metadata.bsmjaCode;
   const cppLines = metadata.cppLines || [];
 
   return (
@@ -50,6 +50,16 @@ export default function CodePanel({ metadata, codeLine }) {
             }`}
           >
             C++
+          </button>
+          <button
+            onClick={() => setActiveTab('bsmja')}
+            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              activeTab === 'bsmja'
+                ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
+                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+            }`}
+          >
+            بصمجه
           </button>
         </div>
 
@@ -89,7 +99,7 @@ export default function CodePanel({ metadata, codeLine }) {
             {metadata.pseudocode}
           </SyntaxHighlighter>
         </div>
-      ) : (
+      ) : activeTab === 'cpp' ? (
         <div className="overflow-x-auto">
           <SyntaxHighlighter
             language="cpp"
@@ -111,6 +121,17 @@ export default function CodePanel({ metadata, codeLine }) {
             }}
           >
             {metadata.cppCode}
+          </SyntaxHighlighter>
+        </div>
+      ) : (
+        <div className="overflow-x-auto">
+          <SyntaxHighlighter
+            language="cpp"
+            style={oneDark}
+            customStyle={{ margin: 0, borderRadius: '0.5rem', fontSize: '0.8125rem', background: '#1e1e2e' }}
+            showLineNumbers
+          >
+            {metadata.bsmjaCode}
           </SyntaxHighlighter>
         </div>
       )}
