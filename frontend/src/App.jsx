@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import AlgorithmPage from './pages/AlgorithmPage';
 
 export default function App() {
@@ -26,13 +27,17 @@ export default function App() {
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-200">
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950 transition-colors duration-200">
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-      <Routes>
-        <Route path="/" element={<Navigate to="/bubble-sort" replace />} />
-        <Route path="/:slug" element={<AlgorithmPage />} />
-      </Routes>
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Navigate to="/bubble-sort" replace />} />
+          <Route path="/:slug" element={<AlgorithmPage />} />
+        </Routes>
+      </main>
+
+      <Footer />
     </div>
   );
 }
