@@ -2,7 +2,7 @@
 
 > An interactive data structures and algorithms visualizer built to make core CS concepts easier to understand through animation, code, and step-by-step explanation.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-0ea5e9?style=for-the-badge&logo=netlify&logoColor=white)](https://dsa-studio.netlify.app)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-0ea5e9?style=for-the-badge&logo=netlify&logoColor=white)](https://dsa-studio-henna.vercel.app/)
 [![React](https://img.shields.io/badge/React-18-20232a?style=for-the-badge&logo=react&logoColor=61dafb)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-0f172a?style=for-the-badge&logo=tailwindcss&logoColor=38bdf8)](https://tailwindcss.com/)
